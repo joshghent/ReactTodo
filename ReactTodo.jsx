@@ -28,7 +28,9 @@ Meteor.methods({
         if(!Meteor.userId()){
             throw new Meteor.Error('not-authorized');
         }
-        
+        else if(text === ""){
+            throw new Meteor.Error('Please enter text to add a task.');
+        }
         Tasks.insert({
             text: text,
             createdAt: new Date(),
